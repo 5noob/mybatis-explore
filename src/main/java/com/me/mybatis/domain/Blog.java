@@ -16,4 +16,12 @@ public class Blog {
     private int id;
 
     private String name;
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

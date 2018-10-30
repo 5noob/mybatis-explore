@@ -8,4 +8,15 @@
         from blog
         where id = #{id}
     </select>
+    
+    <insert id="insertBlog" parameterType="com.me.mybatis.domain.Blog">
+        insert into blog (id, name)
+        values(#{id}, #{name, javaType=String, jdbcType=VARCHAR})
+    </insert>
+
+
+    <resultMap id="blogMap" type="com.me.mybatis.domain.Blog">
+        <result property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="name" column="name" javaType="String" jdbcType="VARCHAR" />
+    </resultMap>
 </mapper>

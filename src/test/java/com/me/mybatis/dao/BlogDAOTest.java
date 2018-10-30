@@ -21,6 +21,7 @@ public class BlogDAOTest {
         try{
             BlogDAO blogDAO = sqlsession.getMapper(BlogDAO.class);
             Blog blog = blogDAO.selectBlog(1);
+            System.out.println(blog);
         }finally {
             sqlsession.close();
         }
@@ -33,6 +34,23 @@ public class BlogDAOTest {
         try{
             BlogDAO blogDAO = sqlsession.getMapper(BlogDAO.class);
             Blog blog = blogDAO.selectBlogByXml(1);
+            System.out.println(blog);
+        }finally {
+            sqlsession.close();
+        }
+    }
+
+    @Test
+    public void insertBlog() throws IOException {
+        MySqlSessionFactory mySqlSessionFactory = new MySqlSessionFactory();
+        SqlSession sqlsession = mySqlSessionFactory.getSqlSessionFactoryFromXml().openSession();
+        try{
+            BlogDAO blogDAO = sqlsession.getMapper(BlogDAO.class);
+            Blog blog = new Blog(3, "王二");
+            // Junit的单元测试，默认回滚，所以没有插入值到数据库里面
+            int i = blogDAO.insertBlog(blog);
+            Blog blog1 = blogDAO.selectBlogByXml(3);
+            System.out.println(blog1);
         }finally {
             sqlsession.close();
         }

@@ -3,7 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--configuration的内容是有顺序的 "(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)"-->
+
     <properties resource="db.properties" />
+
+    <typeHandlers>
+        <package name="com.me.mybatis.typehandler" />
+    </typeHandlers>
 
     <environments default="development">
         <environment id="development">
@@ -16,6 +22,7 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
         <mapper resource="mappers/BlogMapper.xml"/>
     </mappers>

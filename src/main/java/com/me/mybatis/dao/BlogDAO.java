@@ -14,4 +14,6 @@ public interface BlogDAO {
     Blog selectBlog(int id);
 
     Blog selectBlogByXml(int id);
+
+    int insertBlog(Blog blog);
 }
