@@ -1,6 +1,7 @@
 package com.me.mybatis.dao;
 
 import com.me.mybatis.domain.Blog;
+import com.me.mybatis.domain.LastName;
 import com.me.mybatis.factory.MySqlSessionFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -46,11 +47,11 @@ public class BlogDAOTest {
         SqlSession sqlsession = mySqlSessionFactory.getSqlSessionFactoryFromXml().openSession();
         try{
             BlogDAO blogDAO = sqlsession.getMapper(BlogDAO.class);
-            Blog blog = new Blog(3, "王二");
-            // Junit的单元测试，默认回滚，所以没有插入值到数据库里面
+            Blog blog = new Blog(3, "赵三", LastName.ZHAO, LastName.ZHAO);
             int i = blogDAO.insertBlog(blog);
             Blog blog1 = blogDAO.selectBlogByXml(3);
             System.out.println(blog1);
+            sqlsession.commit();
         }finally {
             sqlsession.close();
         }

@@ -19,12 +19,12 @@ public class ExampleTypeHandler extends BaseTypeHandler<String> {
 
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType) throws SQLException {
-        ps.setString(i, "yy" + parameter);
+        ps.setString(i, parameter);
     }
 
     @Override
     public String getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        return  "xx" + rs.getString(columnName);
+        return rs.getString(columnName);
     }
 
     @Override

@@ -17,11 +17,17 @@ public class Blog {
 
     private String name;
 
+    private LastName lastName;
+
+    private LastName lastNameOrder;
+
     @Override
     public String toString() {
         return "Blog{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", lastName=" + lastName +
+                ", lastNameOrder=" + lastNameOrder +
                 '}';
     }
 }

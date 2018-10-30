@@ -3,20 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.me.mybatis.dao.BlogDAO">
-    <select id="selectBlogByXml" resultType="com.me.mybatis.domain.Blog">
+    <select id="selectBlogByXml" resultMap="blogMap">
         select *
         from blog
         where id = #{id}
     </select>
     
     <insert id="insertBlog" parameterType="com.me.mybatis.domain.Blog">
-        insert into blog (id, name)
-        values(#{id}, #{name, javaType=String, jdbcType=VARCHAR})
+        insert into blog (id, name, lastName, lastNameOrder)
+        values(#{id},
+             #{name, javaType=String, jdbcType=VARCHAR},
+             #{lastName, typeHandler=org.apache.ibatis.type.EnumTypeHandler},
+             #{lastNameOrder, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler})
     </insert>
 
-
     <resultMap id="blogMap" type="com.me.mybatis.domain.Blog">
-        <result property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="id" column="id" />
         <result property="name" column="name" javaType="String" jdbcType="VARCHAR" />
+        <result property="lastName" column="lastName" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result property="lastNameOrder" column="lastNameOrder" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
     </resultMap>
 </mapper>
