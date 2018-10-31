@@ -30,4 +30,8 @@ public class Blog {
                 ", lastNameOrder=" + lastNameOrder +
                 '}';
     }
+
+    public void work(){
+        System.out.println("======= do something =========");
+    }
 }
