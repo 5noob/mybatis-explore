@@ -17,6 +17,12 @@
              #{lastNameOrder, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler})
     </insert>
 
+    <update id="updateBlog" parameterType="com.me.mybatis.domain.Blog">
+        update blog
+        set name = #{name}, lastName = #{lastName}, lastNameOrder = #{lastNameOrder, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
+        where id = #{id}
+    </update>
+
     <resultMap id="blogMap" type="com.me.mybatis.domain.Blog">
         <result property="id" column="id" />
         <result property="name" column="name" javaType="String" jdbcType="VARCHAR" />

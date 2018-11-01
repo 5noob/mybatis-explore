@@ -56,4 +56,18 @@ public class BlogDAOTest {
             sqlsession.close();
         }
     }
+
+    @Test
+    public void updateBlog() throws IOException {
+        MySqlSessionFactory mySqlSessionFactory = new MySqlSessionFactory();
+        SqlSession sqlsession = mySqlSessionFactory.getSqlSessionFactoryFromXml().openSession();
+        Blog blog = new Blog(3, "李立", LastName.LI, LastName.LI);
+        try{
+            BlogDAO blogDAO = sqlsession.getMapper(BlogDAO.class);
+            int i = blogDAO.updateBlog(blog);
+            sqlsession.commit();
+        }finally {
+            sqlsession.close();
+        }
+    }
 }
