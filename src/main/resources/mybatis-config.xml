@@ -19,6 +19,9 @@
         <plugin interceptor="com.me.mybatis.plugin.ExamplePlugin">
             <property name="someProperty" value="200" />
         </plugin>
+        <plugin interceptor="com.me.mybatis.plugin.SecondExamplePlugin">
+            <property name="someProperty" value="200" />
+        </plugin>
     </plugins>
 
     <environments default="development">

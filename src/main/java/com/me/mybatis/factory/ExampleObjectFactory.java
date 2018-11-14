@@ -26,7 +26,9 @@ public class ExampleObjectFactory extends DefaultObjectFactory {
         //在Mybatis自动实例化Blog类时（比如select时），可以搞一些事情
         //为什么只在这个create方法加一些逻辑，不在上一个create方法加，因为上一个create方法，还是调用了这个方法
         if(type == Blog.class){
+            System.out.println("==== ExampleObjectFactory开始搞事情 ====");
             ((Blog) object).work();
+            System.out.println("==== ExampleObjectFactory搞事结束 ====");
         }
         return object;
     }
@@ -41,9 +43,10 @@ public class ExampleObjectFactory extends DefaultObjectFactory {
          */
 
         this.properties = properties;
-        System.out.println("==== setProperties这里也搞一些事情 =====");
+        System.out.println("==== ExampleObjectFactory的setProperties也搞一些事情 =====");
         for(Map.Entry<Object, Object> entry: properties.entrySet()){
             System.out.println(entry.getKey() + ":" + entry.getValue());
         }
+        System.out.println("===== ExampleObjectFactory的setProperties搞事结束 =====");
     }
 }

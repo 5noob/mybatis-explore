@@ -1,6 +1,5 @@
 package com.me.mybatis.plugin;
 
-
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
@@ -17,12 +16,12 @@ import java.util.Properties;
 
 /**
  * @author OuyangJie
- * @Date 2018/11/1 9:12
+ * @Date 2018/11/13 20:57
  * @Description:
  */
 @Intercepts({@Signature(
         type= Executor.class, method = "query", args={MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
-        ),
+),
         @Signature(
                 type = ParameterHandler.class, method = "setParameters", args = {PreparedStatement.class}
         ),
@@ -33,9 +32,9 @@ import java.util.Properties;
                 type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}
         )
 })
-public class ExamplePlugin implements Interceptor {
+public class SecondExamplePlugin implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
-        System.out.println("==== ExamplePlugin 开始搞事情：" + invocation.getMethod().getName() + "  ====");
+        System.out.println("==== SecondExamplePlugin 开始搞事情：" + invocation.getMethod().getName() + "  ====");
         return invocation.proceed();
     }
 
